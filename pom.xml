@@ -1,0 +1,232 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>net.ducquoc.training</groupId>
+  <artifactId>42-day-kotlin</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>42-day-kotlin</name>
+  <url>https://github.com/ducquoc/linecount-maven-plugin</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.release>11</maven.compiler.release>
+    <kotlin.version>1.5.10</kotlin.version>
+  </properties>
+
+  <!-- https://mvnrepository.com/repos/central -->
+  <!-- http://jcenter.bintray.com/ -->
+  <repositories>
+    <repository>
+      <url>https://packages.atlassian.com/mvn/maven-external/</url>
+      <id>atlassian-external</id>
+      <!--<url>https://packages.atlassian.com/mvn/maven-atlassian-external/</url>-->
+      <snapshots><enabled>false</enabled><updatePolicy>never</updatePolicy></snapshots>
+    </repository>
+    <repository>
+      <id>osgeo-geotools</id>
+      <url>http://download.osgeo.org/webdav/geotools</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>jboss-thirdparty-releases</id>
+      <url>https://repository.jboss.org/nexus/content/repositories/thirdparty-releases/</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>datanucleus</id>
+      <url>http://www.datanucleus.org:15080/downloads/maven2/</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>ebi-repo</id>
+      <url>https://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo/</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>conjars</id>
+      <url>http://conjars.org/repo/</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>typesafe-releases</id>
+      <url>http://repo.typesafe.com/typesafe/releases/</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>in2p3.fr</id>
+      <url>http://maven.in2p3.fr/</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <url>http://repository.sonatype.org/content/groups/public/</url>
+      <id>sonatype</id>
+    </repository>
+    <repository>
+      <url>http://repo.spring.io/libs-milestone/</url>
+      <id>spring-libs-milestone</id>
+    </repository>
+    <repository>
+      <id>sonatype-releases</id>
+      <url>https://oss.sonatype.org/content/repositories/releases</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>sonatype-snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <releases><enabled>false</enabled></releases>
+    </repository>
+<!--
+    <repository>
+      <id>kotlin-dev</id>
+      <url>https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev</url>
+    </repository>
+-->
+    <repository>
+      <url>https://github.com/ducquoc/legacy_m2_repo/raw/master/release/</url>
+      <id>legacy-releases-temp-repository</id>
+      <!--<url>https://raw.github.com/ducquoc/legacy_m2_repo/master/release/</url>-->
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+  </repositories>
+
+  <!-- https://m2proxy.atlassian.com/webapp/#/search/quick/ http://search.maven.org/ -->
+  <dependencies>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+      <version>${kotlin.version}</version>
+    </dependency>
+    <!--
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-script-runtime</artifactId>
+      <version>${kotlin.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    -->
+
+<!--
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.12</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.7</version>
+      <scope>test</scope>
+    </dependency>
+-->
+  </dependencies>
+
+  <!-- https://ducquoc.wordpress.com/2012/03/03/apache-maven-tips/ -->
+  <build>
+    <!--
+    <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+    <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+    -->
+    <plugins>
+      <plugin>
+        <artifactId>kotlin-maven-plugin</artifactId>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <version>${kotlin.version}</version>
+        <dependencies>
+          <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-maven-noarg</artifactId>
+            <version>${kotlin.version}</version>
+          </dependency>
+        </dependencies>
+        <executions>
+          <execution>
+            <id>compile</id>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <configuration>
+              <sourceDirs>
+                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                <sourceDir>${project.basedir}/src/main/java</sourceDir>
+              </sourceDirs>
+            </configuration>
+          </execution>
+          <execution>
+            <id>test-compile</id>
+            <goals>
+              <goal>test-compile</goal>
+            </goals>
+            <configuration>
+              <sourceDirs>
+                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
+                <sourceDir>${project.basedir}/src/test/java</sourceDir>
+              </sourceDirs>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <release>11</release>
+        </configuration>
+        <executions>
+          <execution>
+            <id>default-compile</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>default-testCompile</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>java-compile</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>java-test-compile</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.4</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>net.ducquoc.training.vn.App</mainClass>
+                </transformer>
+              </transformers>
+              <!--<shadedArtifactAttached>true</shadedArtifactAttached>-->
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
