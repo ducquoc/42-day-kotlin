@@ -1,9 +1,12 @@
 package net.ducquoc.training.vn;
 
 /**
- * Apache POI was originally an acronym for "Poor Obfuscation Implementation".
+ * Kotlin is a "shorter Java" language. 42 is the magic answer.
+ * <br />
+ * "How many roads must a man walk down?"
+ * "before he is called a man"?
  *
- * @see https://en.wikipedia.org/wiki/Apache_POI
+ * @see https://www.quora.com/Why-and-how-is-42-the-answer-to-life-the-universe-and-everything
  */
 @SuppressWarnings("unused")
 public class App {
@@ -16,7 +19,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        System.out.print("==== JAVa " + jUtilRandom(MAGIC_DUC) + jUtilRandom(MAGIC_QUOC));
+        System.out.print("==== JAVa " + jUtilRandom(MAGIC_NUM1) + jUtilRandom(MAGIC_NUM2));
     }
 
     public static String jUtilRandom(long param) {
